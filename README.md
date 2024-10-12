@@ -37,3 +37,20 @@ Adapted from FHIR: https://www.hl7.org/fhir/visionprescription.html
     }]
   }]
 }
+
+## Before running
+Use ruby 2.7.8
+Run bundle exec
+Run npm install
+
+## How to Run
+In root of directory, open a terminal and execute
+`rails server -p 3001`
+
+Then in separate terminal change to the frontend directory
+`cd frontend`
+
+then run
+`pnpm dev`
+or
+`npm run`
