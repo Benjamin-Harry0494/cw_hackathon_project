@@ -1,0 +1,38 @@
+{
+    "resourceType" : "VisionPrescription",
+    "dateWritten" : "2023-11-28",
+    "extension": [{
+          "url": "BVD",
+          "valueDecimal": 11.00
+      }],
+    "lensSpecification" : [{
+      "eye" : "right",
+      "sphere" : -5.00,
+      "cylinder" : -0.75,
+      "axis" : 170.0,
+      "prism" : [{
+        "amount" : 0,
+        "base" : ""
+      }],
+      "add" : 2.25,
+      "extension": [{
+          "url": "inter-ADD",
+          "valueDecimal": 1.75
+      }]
+    },
+    {
+        "eye" : "left",
+        "sphere" : -5.00,
+        "cylinder" : -1.25,
+        "axis" : 5.0,
+        "prism" : [{
+            "amount" : 0,
+            "base" : ""
+        }],
+        "add" : 2.25,
+        "extension": [{
+          "url": "inter-ADD",
+          "valueDecimal": 1.75
+        }]
+    }]
+}
