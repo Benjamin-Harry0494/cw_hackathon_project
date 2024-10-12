@@ -37,7 +37,6 @@ const TestPage = () => {
         // let image = loadImage(url);
         // const ret = await worker.recognize(image);
         // console.log(ret);
-        console.log("STUFF IS HAPPENING!")
         await worker.terminate();
     })();
 
@@ -70,18 +69,8 @@ const TestPage = () => {
             <h1>Test API Response</h1>
             <p>{message}</p>
 
-            <div className="container">
-                <p>
-                    Here's a paragraph. It's a very interesting paragraph. You are captivated by
-                    this paragraph. Keep reading this paragraph. Okay, now you can stop reading
-                    this paragraph. Thanks for reading me.
-                </p>
-            </div>
-
-            <h2> Upload Prescription</h2>
+            <h3> Upload Prescription</h3>
             <PrescriptionInfoForm/>
-
-            {/*<img src={"http://tesseract.projectnaptha.com/img/eng_bw.png"} alt={"poem"}/>*/}
 
         </div>
     );
