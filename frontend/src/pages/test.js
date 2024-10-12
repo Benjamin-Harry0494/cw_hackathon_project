@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
+import {createWorker} from 'tesseract.js';
 
 const TestPage = () => {
     const [message, setMessage] = useState('');
@@ -20,10 +21,26 @@ const TestPage = () => {
         fetchData();
     }, []);
 
+
+    (async () => {
+        // const worker = await createWorker('eng');
+        const worker = await createWorker('eng', 1, {
+            logger: m => console.log(m),
+        });
+
+        // const ret = await worker.recognize('http://localhost:3001/images/eng_bw.png');
+        // const ret = await worker.recognize('frontend/src/app/images/eng_bw.png');
+        // const ret = await worker.recognize('https://tesseract.projectnaptha.com/img/eng_bw.png');
+        console.log(ret);
+        await worker.terminate();
+    })();
+
     return (
         <div>
             <h1>Test API Response</h1>
             <p>{message}</p>
+            <img src={"http://tesseract.projectnaptha.com/img/eng_bw.png"} alt={"poem"}/>
+
         </div>
     );
 };
