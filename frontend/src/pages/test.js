@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react';
 import {createWorker} from 'tesseract.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import PrescriptionInfoForm from "../app/components/PrescriptionInfoForm";
 
 const TestPage = () => {
     const [message, setMessage] = useState('');
@@ -45,29 +47,7 @@ const TestPage = () => {
             <p>{message}</p>
 
             <h2> Upload Prescription</h2>
-            <form onClick={parsePrescription}>
-                {/*<form action="/read-prescription">*/}
-                <input type="file" id="myFile" name="filename"/>
-                <input type="submit"/>
-            </form>
-
-            <h2>Prescription Input</h2>
-            <form action="/generate-prescription" method="post">
-
-                <p>
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" name="user_name"/>
-                </p>
-                <p>
-                    <label htmlFor="mail">Email:</label>
-                    <input type="email" id="mail" name="user_email"/>
-                </p>
-                <p>
-                    <label htmlFor="msg">Message:</label>
-                    <textarea id="msg" name="user_message"></textarea>
-                </p>
-            </form>
-
+            <PrescriptionInfoForm/>
 
             <img src={"http://tesseract.projectnaptha.com/img/eng_bw.png"} alt={"poem"}/>
 
