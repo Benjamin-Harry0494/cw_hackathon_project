@@ -39,8 +39,7 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
   def build_ocr_record(params)
     {
       user_id: params[:user_id],
-      document_data: params[:document_data],
+      document_data: params[:document_data]
     }
   end
 end
-  
