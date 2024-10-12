@@ -24,16 +24,20 @@ const TestPage = () => {
     }, []);
 
 
-    (async () => {
-        // const worker = await createWorker('eng');
-        const worker = await createWorker('eng', 1, {
-            logger: m => console.log(m),
-        });
+    let ocr = (async () => {
+        const worker = await createWorker('eng');
+        // const worker = await createWorker('eng', 1, {
+        //     logger: m => console.log(m),
+        // });
 
-        // const ret = await worker.recognize('http://localhost:3001/images/eng_bw.png');
-        // const ret = await worker.recognize('frontend/src/app/images/eng_bw.png');
-        // const ret = await worker.recognize('https://tesseract.projectnaptha.com/img/eng_bw.png');
+        const url = 'https://tesseract.projectnaptha.com/img/eng_bw.png';
+        // const url = 'frontend/src/app/images/eng_bw.png';
+        // const url = 'http://localhost:3001/images/eng_bw.png';
+
+        // let image = loadImage(url);
+        // const ret = await worker.recognize(image);
         // console.log(ret);
+        console.log("STUFF IS HAPPENING!")
         await worker.terminate();
     })();
 
@@ -41,10 +45,38 @@ const TestPage = () => {
         console.log("Parsing prescription");
     }
 
+    // const container = document.querySelector(".container");
+
+
+    // function loadImage(url) {
+    //     const image = new Image(200, 200);
+    //     image.addEventListener("load", () => container.prepend(image));
+    //
+    //     image.addEventListener("error", () => {
+    //         const errMsg = document.createElement("output");
+    //         errMsg.value = `Error loading image at ${url}`;
+    //         container.append(errMsg);
+    //     });
+    //
+    //     image.crossOrigin = "anonymous";
+    //     image.alt = "";
+    //     image.src = url;
+    //
+    //     return image;
+    // }
+
     return (
         <div>
             <h1>Test API Response</h1>
             <p>{message}</p>
+
+            <div className="container">
+                <p>
+                    Here's a paragraph. It's a very interesting paragraph. You are captivated by
+                    this paragraph. Keep reading this paragraph. Okay, now you can stop reading
+                    this paragraph. Thanks for reading me.
+                </p>
+            </div>
 
             <h2> Upload Prescription</h2>
             <PrescriptionInfoForm/>

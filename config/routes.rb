@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :test
+      resources :submit_prescription
 
       namespace :ocr_record, defaults: { format: :json } do
         post '/', controller: :create_entry, action: :create
