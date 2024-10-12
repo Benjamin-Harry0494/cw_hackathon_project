@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 
 function PrescriptionInfoForm() {
     return (
-        <Form action="/api/v1/submit_prescription" method="POST">
+        <Form action="http://localhost:3000/api/v1/ocr_record/submit" method="POST">
             <fieldset>
                 <Form.Group className="">
                     <Form.Label>Date of prescription (YYYY-MM-DD)</Form.Label>

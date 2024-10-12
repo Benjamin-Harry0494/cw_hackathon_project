@@ -81,7 +81,7 @@ const TestPage = () => {
             <h2> Upload Prescription</h2>
             <PrescriptionInfoForm/>
 
-            <img src={"http://tesseract.projectnaptha.com/img/eng_bw.png"} alt={"poem"}/>
+            {/*<img src={"http://tesseract.projectnaptha.com/img/eng_bw.png"} alt={"poem"}/>*/}
 
         </div>
     );
