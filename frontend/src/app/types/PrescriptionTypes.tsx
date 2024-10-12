@@ -6,7 +6,7 @@ export type Prescription = {
 }
 
 export type LensSpecification = {
-    eye: String;
+    eye: string;
     sphere: number;
     cylinder: number;
     axis: number;
@@ -21,6 +21,6 @@ export type Prism = {
 }
 
 export type Extension = {
-    url: String;
+    url: string;
     valueDecimal: number;
 }
