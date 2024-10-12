@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :test
 
+      namespace :ocr_record, defaults: { format: :json } do
+        post '/:patient_id', controller: :create_entry, action: :create
+      end
     end
   end
 end
