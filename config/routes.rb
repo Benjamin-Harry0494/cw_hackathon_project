@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :test
 
       namespace :ocr_record, defaults: { format: :json } do
-        post '/:patient_id', controller: :create_entry, action: :create
+        post '/', controller: :create_entry, action: :create
       end
     end
   end
