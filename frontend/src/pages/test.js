@@ -3,9 +3,19 @@ import {createWorker} from 'tesseract.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PrescriptionInfoForm from "../app/components/PrescriptionInfoForm";
 import '../app/styles/FormStyle.css'
+import { useRouter } from 'next/router';
 
 const TestPage = () => {
     const [message, setMessage] = useState('');
+    const router = useRouter();
+
+    const {email, prescription} = router.query;
+
+    //base64decode the prescription
+    const decodedPrescription = prescription ? atob(prescription) : null;
+
+    //convert string to json
+    const jsonPrescription = JSON.parse(decodedPrescription);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -71,8 +81,12 @@ const TestPage = () => {
             <p>{message}</p>
 
             <h3> Upload Prescription</h3>
-            <PrescriptionInfoForm/>
-
+            <PrescriptionInfoForm prescription={jsonPrescription}/>
+            
+            <p>
+                {/* {jsonprescription} */}
+                {decodedPrescription}
+            </p>
         </div>
     );
 };
