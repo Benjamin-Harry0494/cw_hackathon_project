@@ -47,6 +47,7 @@ function PrescriptionInfoForm() {
 
     // TODO:  datefield is not displaying well
     // TODO: BVD data format isn't great
+    // TODO: Formatting and styling in general not great
     return (
         <div style={{padding: 15, width: "75%"}}>
             <form onSubmit={(e) => {
@@ -54,19 +55,19 @@ function PrescriptionInfoForm() {
                 e.stopPropagation();
                 form.handleSubmit();
             }}>
-                <fieldset>
-                    <form.Field
-                        name="dateWritten"
-                        children={() => (
-                            <DateField>
-                                <Label>Date of prescription: </Label>
-                                <DateInput>
-                                    {segment => <DateSegment segment={segment}/>}
-                                </DateInput>
-                            </DateField>
-                        )}
-                    />
-                </fieldset>
+                {/*<fieldset>*/}
+                {/*    <form.Field*/}
+                {/*        name="dateWritten"*/}
+                {/*        children={() => (*/}
+                {/*            <DateField>*/}
+                {/*                <Label>Date of prescription: </Label>*/}
+                {/*                <DateInput>*/}
+                {/*                    {segment => <DateSegment segment={segment}/>}*/}
+                {/*                </DateInput>*/}
+                {/*            </DateField>*/}
+                {/*        )}*/}
+                {/*    />*/}
+                {/*</fieldset>*/}
                 <fieldset>
                     <legend>Left Eye</legend>
                     <form.Field
@@ -159,7 +160,6 @@ function PrescriptionInfoForm() {
                             </NumberField>
                         )}
                     />
-
                     <form.Field
                         name={`lensSpecification[${0}].extension[${0}].valueDecimal`}
                         children={(field) => (
@@ -258,6 +258,21 @@ function PrescriptionInfoForm() {
                         children={(field) => (
                             <NumberField>
                                 <Label htmlFor={field.name}>Add: </Label>
+                                <Input
+                                    name={field.name}
+                                    type="number"
+                                    value={field.state.value}
+                                    onBlur={field.handleBlur}
+                                    onChange={(e) => field.handleChange(e.target.value)}
+                                />
+                            </NumberField>
+                        )}
+                    />
+                    <form.Field
+                        name={`lensSpecification[${1}].extension[${0}].valueDecimal`}
+                        children={(field) => (
+                            <NumberField>
+                                <Label htmlFor={field.name}> Back Vertex Distance (BVD): </Label>
                                 <Input
                                     name={field.name}
                                     type="number"
