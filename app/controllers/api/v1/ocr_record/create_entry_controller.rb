@@ -7,12 +7,8 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
 
   def create
     puts 'Creating new record'
-    puts params
 
-    puts "Hello World"
-    puts params[:prescription][:resourceType]
-
-    patient_name = params[:prescription][:resourceType]
+    patient_name = params[:prescription][:patientName]
     create_class_result = create_generic_class
     unless create_class_result[:success]
       render json: { error: "Unable to create google loyalty class #{create_class_result}" },
@@ -191,7 +187,7 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
   end
 
   def build_ocr_record(params, class_id)
-    patient_name = params[:prescription][:resourceType]
+    patient_name = params[:prescription][:patientName]
     {
       patient_name: patient_name,
       class_id: class_id,
