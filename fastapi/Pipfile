@@ -8,6 +8,7 @@ fastapi = "*"
 google-generativeai = "*"
 uvicorn = "*"
 python-multipart = "*"
+google-api-python-client = "*"
 
 [dev-packages]
 
