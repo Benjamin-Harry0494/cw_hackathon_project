@@ -3,9 +3,8 @@ import {Prescription} from "@/app/types/PrescriptionTypes";
 import {useForm} from "@tanstack/react-form";
 import {Label, Input, NumberField, DateField, DateInput, DateSegment} from 'react-aria-components';
 
-
-function PrescriptionInfoForm() {
-    const emptyPrescription: Prescription = {
+export const PrescriptionInfoForm = (prescription: Prescription) => {
+    const emptyPrescription: Prescription = prescription || {
         resourceType: "VisionPrescription",
         dateWritten: new Date(),
         extension: [],
