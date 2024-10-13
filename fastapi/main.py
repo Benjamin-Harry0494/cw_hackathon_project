@@ -2,7 +2,8 @@ import google.generativeai as genai
 import json
 import os
 from fastapi import FastAPI, File, UploadFile, Form
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
+import base64
 
 genai.configure(api_key=os.environ["API_KEY"])
 model = genai.GenerativeModel("gemini-1.5-flash")
@@ -18,7 +19,7 @@ async def upload_file(file: UploadFile = File(...), email: str = Form(...)):
         f.write(contents)
 
     uploaded_file = genai.upload_file(f"uploaded_{file.filename}")
-    print(uploaded_file)
+    # print(uploaded_file)
     query = """
     Return the data from this image using this schema. Make sure it is valid json
     
@@ -57,8 +58,15 @@ async def upload_file(file: UploadFile = File(...), email: str = Form(...)):
         [uploaded_file, query]
     )
     clean_response = response.text.strip()
+    clean_response = clean_response[7:-3]
     # clean_response = clean_response.replace('None', 'null').replace('\n', '')
-    return {"email": email, "prescription": json.loads(clean_response[7:-3])}
+
+    response_encoded = base64.b64encode(clean_response.encode('utf-8')).decode('utf-8')
+
+    return RedirectResponse(f"http://localhost:3000/test?email={email}&prescription={response_encoded}")
+
+
+    # return {"email": email, "prescription": json.loads(clean_response[7:-3])}
 
 @app.get("/")
 async def main():
