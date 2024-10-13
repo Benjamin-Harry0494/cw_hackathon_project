@@ -6,9 +6,7 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
   GOOGLE_WALLET_URL = 'https://walletobjects.googleapis.com/walletobjects/v1/loyaltyClass'
   WALLET_OBJECTS = Google::Apis::WalletobjectsV1
 
-
   def create
-    puts params
     puts 'Creating new record'
     qr_code_data = build_ocr_record(params)
     patient_name = params[:patient_name]
