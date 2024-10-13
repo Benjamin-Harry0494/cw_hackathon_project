@@ -20,7 +20,7 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
     create_instance_result = create_generic_instance(class_id, qr_code_data, patient_name)
     return unless create_instance_result[:success]
 
-    objs = render_objects(class_id)
+    objs = render_objects(class_id, create_instance_result[:id])
     render json: objs[:success] ? objs[:body] : objs[:error], status: objs[:success] ? :ok : :bad_request
   end
 
@@ -33,7 +33,7 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
 
   private
 
-  def render_objects(class_id)
+  def render_objects(class_id, object_id)
     response = @wallet_service.list_genericobjects(class_id: class_id)
     wallet_items = response.resources.map do |item|
       qr_code_data = item.barcode.value.present? ? JSON.parse(item.barcode.value) : {}
@@ -46,24 +46,28 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
         patient_name: item.text_modules_data.first.localized_body.default_value.value,
         qr_code_items: {
           patient_name: qr_code_data['patient_name'],
+          date: qr_code_data['date'],
           class_id: qr_code_data['class_id'],
           program: qr_code_data['program'],
           history_link: qr_code_data['history_link'],
           prescription: qr_code_data['prescription']
         }
       }
-
     end
-    { success: true, body: wallet_items }
+
+    matching_item = wallet_items.find { |item| item[:id] == object_id }
+
+    { success: true, body: matching_item }
   rescue Google::Apis::ClientError => e
     { success: false, body: 'No items found', error: e.message }
   end
 
   def create_generic_class
     issuer_id = '3388000000022782190'
+    class_id = "#{issuer_id}.genericClass.v4"
 
     generic_class = WALLET_OBJECTS::GenericClass.new(
-      id: "#{issuer_id}.genericClass.v3",
+      id: class_id,
       issuer_name: 'Find My Eye Test',
       title: 'Find My Eye Test',
       provider: 'Find My Eye Test',
@@ -96,10 +100,10 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
     )
 
     res = @wallet_service.insert_genericclass(generic_class)
-    { success: true, message: 'Generic object created successfully', loyalty_class_id: "#{issuer_id}.genericClass.v3", result: res }
+    { success: true, message: 'Generic object created successfully', loyalty_class_id: class_id, result: res }
   rescue Google::Apis::ClientError => e
     if e.message.include?('existingResource')
-      { success: true, message: 'Generic object already exists', loyalty_class_id: "#{issuer_id}.genericClass.v3", result: res }
+      { success: true, message: 'Generic object already exists', loyalty_class_id: class_id, result: res }
     else
       { success: false, message: 'Unable to create generic class', error: e.message, result: res }
     end
@@ -170,7 +174,7 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
     puts generic_object.to_json
 
     result = @wallet_service.insert_genericobject(generic_object)
-    { success: true, message: 'Generic object instance created successfully', result: result }
+    { success: true, message: 'Generic object instance created successfully', result: result, id: id }
   rescue Google::Apis::ClientError => e
     { success: false, message: 'Failed to create generic object instance', error: e.message, result: result }
   end
@@ -188,8 +192,12 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
 
   def build_ocr_record(params, class_id)
     patient_name = params[:prescription][:patientName]
+    date = DateTime.now.strftime('%Y-%m-%d').to_s
+    puts date
+    puts "WORLD"
     {
       patient_name: patient_name,
+      date: date,
       class_id: class_id,
       program: 'Find My Eye Test',
       prescription: params[:prescription],

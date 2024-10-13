@@ -2,10 +2,8 @@ import Button from 'react-bootstrap/Button';
 import {Prescription} from "@/app/types/PrescriptionTypes";
 import {useForm} from "@tanstack/react-form";
 import {Label, Input, NumberField, DateField, DateInput, DateSegment, TextField} from 'react-aria-components';
-import { useEffect } from 'react';
 
 export const PrescriptionInfoForm = (prescription: Prescription) => {
-    // console.log(prescription);
     const emptyPrescription: Prescription = {
         resourceType: "VisionPrescription",
         patientName: "",
@@ -30,11 +28,7 @@ export const PrescriptionInfoForm = (prescription: Prescription) => {
         }],
     }
 
-    // console.log(emptyPrescription);
-    // console.log(prescription.prescription);
-
     const form = useForm({
-
         defaultValues: prescription.prescription || emptyPrescription,
         onSubmit: async ({value}) => {
             const response = await fetch('http://localhost:3000/api/v1/ocr_record/', {
@@ -51,15 +45,6 @@ export const PrescriptionInfoForm = (prescription: Prescription) => {
         }
     })
 
-    // useEffect(() => {
-    //     if (prescription) {
-    //       console.log("Setting form values to prescription: ");
-    //     //   emptyPrescription: prescription;
-    //     }
-    //   }, [prescription]); // Dependency on prescription prop
-
-
-    // TODO:  datefield is not displaying well
     // TODO: BVD data format isn't great
     // TODO: Formatting and styling in general not great
     return (
@@ -85,9 +70,24 @@ export const PrescriptionInfoForm = (prescription: Prescription) => {
                             </TextField>
                         )}
                     />
-
                 </fieldset>
-                <fieldset/>
+                <fieldset>
+                    <form.Field
+                        name={`patientEmail`}
+                        children={(field) => (
+                            <TextField>
+                                <Label htmlFor={field.name}>Patient Email: </Label>
+                                <Input
+                                    name={field.name}
+                                    type="text"
+                                    value={field.state.value}
+                                    onBlur={field.handleBlur}
+                                    onChange={(e) => field.handleChange(e.target.value)}
+                                />
+                            </TextField>
+                        )}
+                    />
+                </fieldset>
                 {/*<fieldset>*/}
                 {/*    <form.Field*/}
                 {/*        name="dateWritten"*/}

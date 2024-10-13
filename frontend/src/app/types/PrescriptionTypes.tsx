@@ -1,6 +1,7 @@
 export type Prescription = {
     resourceType: string;
     patientName: string;
+    patientEmail: string;
     dateWritten: Date;
     extension: Extension[];
     lensSpecification: LensSpecification[];
