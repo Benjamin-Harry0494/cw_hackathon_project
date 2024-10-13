@@ -2,8 +2,12 @@ import Button from 'react-bootstrap/Button';
 import {Prescription} from "@/app/types/PrescriptionTypes";
 import {useForm} from "@tanstack/react-form";
 import {Label, Input, NumberField, DateField, DateInput, DateSegment, TextField} from 'react-aria-components';
+import QRCode from "react-qr-code";
+import {useState} from "react";
 
 export const PrescriptionInfoForm = (prescription: Prescription) => {
+    const [x, setX] = useState("")
+
     const emptyPrescription: Prescription = {
         resourceType: "VisionPrescription",
         patientName: "",
@@ -38,10 +42,8 @@ export const PrescriptionInfoForm = (prescription: Prescription) => {
                 },
                 body: JSON.stringify({prescription: value}),
             });
-            console.log("Calling for value: ");
-            console.log(value)
-            console.log("Got response: ")
-            console.log(response)
+            let y = await response.json()
+            setX(JSON.stringify(y))
         }
     })
 
@@ -88,19 +90,6 @@ export const PrescriptionInfoForm = (prescription: Prescription) => {
                         )}
                     />
                 </fieldset>
-                {/*<fieldset>*/}
-                {/*    <form.Field*/}
-                {/*        name="dateWritten"*/}
-                {/*        children={() => (*/}
-                {/*            <DateField>*/}
-                {/*                <Label>Date of prescription: </Label>*/}
-                {/*                <DateInput>*/}
-                {/*                    {segment => <DateSegment segment={segment}/>}*/}
-                {/*                </DateInput>*/}
-                {/*            </DateField>*/}
-                {/*        )}*/}
-                {/*    />*/}
-                {/*</fieldset>*/}
                 <fieldset>
                     <legend>Left Eye</legend>
                     <form.Field
@@ -320,6 +309,8 @@ export const PrescriptionInfoForm = (prescription: Prescription) => {
                 <div></div>
                 <Button type="submit" style={{width: "50%"}}>Submit</Button>
             </form>
+
+            {x && <QRCode value={x}></QRCode>}
         </div>
     );
 }

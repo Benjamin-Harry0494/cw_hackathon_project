@@ -17,6 +17,8 @@ const TestPage = () => {
 
     //convert string to json
     const jsonPrescription = JSON.parse(decodedPrescription);
+    const [thing, setThing] = useState()
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,18 +36,22 @@ const TestPage = () => {
         fetchData();
     }, []);
 
+
+    console.log("thing Iss")
+    console.log(thing)
+
     return (
         <div>
             <h1>Find My Eye Test</h1>
 
             <h3> Upload Prescription</h3>
             <div>
-                <PrescriptionInfoForm prescription={jsonPrescription} />
+                <PrescriptionInfoForm prescription={jsonPrescription} x={thing} setX={setThing}/>
             </div>
             <p>
                 {decodedPrescription}
             </p>
-            {/*<QRCode value={}></QRCode>*/}
+
         </div>
     );
 };
