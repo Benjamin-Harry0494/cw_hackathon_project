@@ -6,6 +6,8 @@ Millions of people in the UK visit their local opticians each year for a free ey
 
 'Free' in this case means that the NHS pays the optician just over £20 for carrying out the test.
 
+In 2022/23, there were 12,790,385 NHS eye tests, at a total cost to the NHS of £300,957,759. In addition to this, 123 partially funded eye tests took place.
+
 The eligibility criteria and exact payments vary across the four nations of the UK and are set out in regulations.
 
 Opticians offer the tests under the terms of the General Ophthalmic Services contract which is negotiated periodically between their representative bodies and the four governments.
