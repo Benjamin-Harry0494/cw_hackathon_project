@@ -7,7 +7,12 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
 
   def create
     puts 'Creating new record'
-    patient_name = params[:patient_name]
+    puts params
+
+    puts "Hello World"
+    puts params[:prescription][:resourceType]
+
+    patient_name = params[:prescription][:resourceType]
     create_class_result = create_generic_class
     unless create_class_result[:success]
       render json: { error: "Unable to create google loyalty class #{create_class_result}" },
@@ -33,26 +38,27 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
   private
 
   def render_objects(class_id)
-      response = @wallet_service.list_genericobjects(class_id: class_id)
-      wallet_items = response.resources.map do |item|
-        qr_code_data = item.barcode.value.present? ? JSON.parse(item.barcode.value) : {}
+    response = @wallet_service.list_genericobjects(class_id: class_id)
+    wallet_items = response.resources.map do |item|
+      qr_code_data = item.barcode.value.present? ? JSON.parse(item.barcode.value) : {}
 
-        {
-          id: item.id,
-          class_id: item.class_id,
-          state: item.state,
-          card_title: item.card_title.default_value.value,
-          patient_name: item.text_modules_data.first.localized_body.default_value.value,
-          qr_code_items: {
-            patient_name: qr_code_data['patient_name'],
-            class_id: qr_code_data['class_id'],
-            program: qr_code_data['program'],
-            history_link: qr_code_data['history_link']
-          }
+      {
+        id: item.id,
+        class_id: item.class_id,
+        state: item.state,
+        card_title: item.card_title.default_value.value,
+        patient_name: item.text_modules_data.first.localized_body.default_value.value,
+        qr_code_items: {
+          patient_name: qr_code_data['patient_name'],
+          class_id: qr_code_data['class_id'],
+          program: qr_code_data['program'],
+          history_link: qr_code_data['history_link'],
+          prescription: qr_code_data['prescription']
         }
+      }
 
-      end
-      { success: true, body: wallet_items }
+    end
+    { success: true, body: wallet_items }
   rescue Google::Apis::ClientError => e
     { success: false, body: 'No items found', error: e.message }
   end
@@ -185,11 +191,13 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
   end
 
   def build_ocr_record(params, class_id)
+    patient_name = params[:prescription][:resourceType]
     {
-      patient_name: 'This is your patients name',
+      patient_name: patient_name,
       class_id: class_id,
       program: 'Find My Eye Test',
-      history_link: "https://yourwebsite.com/patient-history/#{params[:patient_name]}"
+      prescription: params[:prescription],
+      history_link: "https://yourwebsite.com/patient-history/#{patient_name}"
     }.to_json
   end
 end
