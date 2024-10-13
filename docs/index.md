@@ -12,7 +12,7 @@ Opticians offer the tests under the terms of the General Ophthalmic Services con
 
 People getting an eye test usually leave the opticians with a card or paper showing their prescription.
 
-Opticians are required to provide this under the terms of a Government regulation from 1989 with the does-what-it-says-on-the-tin title of [The Sight Testing /(Examination and Prescription/) Regulations 1989](https://www.legislation.gov.uk/uksi/1989/1176/regulation/5/made)
+Opticians are required to provide this under the terms of a Government regulation from 1989 with the does-what-it-says-on-the-tin title of [The Sight Testing (Examination and Prescription) Regulations 1989](https://www.legislation.gov.uk/uksi/1989/1176/regulation/5/made)
 
 It is hard for people to keep track of this printed document over time and many will not have it when they next visit an optician, for example because they have broken their glasses.
 
