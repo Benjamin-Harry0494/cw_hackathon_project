@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import {createWorker} from 'tesseract.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PrescriptionInfoForm from "../app/components/PrescriptionInfoForm";
+import '../app/styles/FormStyle.css'
 
 const TestPage = () => {
     const [message, setMessage] = useState('');
