@@ -94,10 +94,10 @@ class Api::V1::OcrRecord::CreateEntryController < ApplicationController
     )
 
     res = @wallet_service.insert_genericclass(generic_class)
-    { success: true, message: 'Generic object created successfully', loyalty_class_id: "#{issuer_id}.genericClass.v2", result: res }
+    { success: true, message: 'Generic object created successfully', loyalty_class_id: "#{issuer_id}.genericClass.v3", result: res }
   rescue Google::Apis::ClientError => e
     if e.message.include?('existingResource')
-      { success: true, message: 'Generic object already exists', loyalty_class_id: "#{issuer_id}.genericClass.v2", result: res }
+      { success: true, message: 'Generic object already exists', loyalty_class_id: "#{issuer_id}.genericClass.v3", result: res }
     else
       { success: false, message: 'Unable to create generic class', error: e.message, result: res }
     end
