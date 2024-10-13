@@ -81,8 +81,10 @@ const TestPage = () => {
             <p>{message}</p>
 
             <h3> Upload Prescription</h3>
-            <PrescriptionInfoForm prescription={jsonPrescription}/>
-            
+            <div>
+                <PrescriptionInfoForm prescription={jsonPrescription} />
+                {/* <p>Loading prescription data...</p> */}
+            </div>            
             <p>
                 {/* {jsonprescription} */}
                 {decodedPrescription}

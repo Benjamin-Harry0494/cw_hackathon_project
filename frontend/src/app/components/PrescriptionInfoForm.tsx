@@ -2,10 +2,11 @@ import Button from 'react-bootstrap/Button';
 import {Prescription} from "@/app/types/PrescriptionTypes";
 import {useForm} from "@tanstack/react-form";
 import {Label, Input, NumberField, DateField, DateInput, DateSegment} from 'react-aria-components';
+import { useEffect } from 'react';
 
 export const PrescriptionInfoForm = (prescription: Prescription) => {
-    console.log(prescription);
-    const emptyPrescription: Prescription = prescription || {
+    // console.log(prescription);
+    const emptyPrescription: Prescription = {
         resourceType: "VisionPrescription",
         dateWritten: new Date(),
         extension: [],
@@ -28,8 +29,12 @@ export const PrescriptionInfoForm = (prescription: Prescription) => {
         }],
     }
 
+    // console.log(emptyPrescription);
+    // console.log(prescription.prescription);
+
     const form = useForm({
-        defaultValues: emptyPrescription,
+        
+        defaultValues: prescription.prescription || emptyPrescription,
         onSubmit: async ({value}) => {
             const response = await fetch('http://localhost:3000/api/v1/ocr_record/', {
                 method: 'POST',
@@ -44,6 +49,14 @@ export const PrescriptionInfoForm = (prescription: Prescription) => {
             console.log(response)
         }
     })
+
+    // useEffect(() => {
+    //     if (prescription) {
+    //       console.log("Setting form values to prescription: ");
+    //     //   emptyPrescription: prescription;
+    //     }
+    //   }, [prescription]); // Dependency on prescription prop
+    
 
     // TODO:  datefield is not displaying well
     // TODO: BVD data format isn't great
