@@ -3,10 +3,9 @@ import {Prescription} from "@/app/types/PrescriptionTypes";
 import {useForm} from "@tanstack/react-form";
 import {Label, Input, NumberField, DateField, DateInput, DateSegment} from 'react-aria-components';
 
-
-function PrescriptionInfoForm(prescription: Prescription) {
-    console.log(prescription)
-    const emptyPrescription: Prescription = {
+export const PrescriptionInfoForm = (prescription: Prescription) => {
+    console.log(prescription);
+    const emptyPrescription: Prescription = prescription || {
         resourceType: "VisionPrescription",
         dateWritten: new Date(),
         extension: [],
@@ -32,7 +31,7 @@ function PrescriptionInfoForm(prescription: Prescription) {
     const form = useForm({
         defaultValues: emptyPrescription,
         onSubmit: async ({value}) => {
-            const response = await fetch('http://localhost:3000/api/v1/ocr_record/submit/', {
+            const response = await fetch('http://localhost:3000/api/v1/ocr_record/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
