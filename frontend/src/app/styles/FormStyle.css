@@ -29,6 +29,14 @@ form {
     grid-column: span 2;
 }
 
+label {
+    padding-right: 10px;
+}
+input {
+    display: inline-flex;
+    justify-self: right;
+}
+
 .react-aria-DateField {
     color: var(--text-color);
 }
