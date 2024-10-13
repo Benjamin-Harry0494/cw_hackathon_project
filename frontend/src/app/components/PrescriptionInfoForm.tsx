@@ -310,7 +310,7 @@ export const PrescriptionInfoForm = (prescription: Prescription) => {
                 <Button type="submit" style={{width: "50%"}}>Submit</Button>
             </form>
 
-            {x && <QRCode value={x}></QRCode>}
+            {x && <QRCode value={x} style={{padding: "20px"}} ></QRCode>}
         </div>
     );
 }
