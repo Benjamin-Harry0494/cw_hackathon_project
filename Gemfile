@@ -14,11 +14,14 @@ gem 'sqlite3', '>= 1.4'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
 
+gem 'googleauth'
 gem 'net-protocol', '~> 0.2.2'
 
 gem 'google-api-client', '~> 0.53.0'
 gem 'httparty' # for HTTP requests, if needed
 gem 'jwt' # for token handling
+gem 'google-apis-walletobjects_v1'
+
 
 gem 'rack-cors'
 
