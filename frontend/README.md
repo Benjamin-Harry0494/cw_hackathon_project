@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+Post this request to generate a new record for ocr
+
+curl -X POST http://localhost:3001/api/v1/ocr_record/ \
+-H 'Content-Type: application/json' \
+-d '{
+"id": 1,
+"uuid": "912dfa03-a-43f8-abfd-75629353afd9",
+"patient_name": "john doe"
+}'
+
