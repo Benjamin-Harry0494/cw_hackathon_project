@@ -8,6 +8,7 @@ export const PrescriptionInfoForm = (prescription: Prescription) => {
     // console.log(prescription);
     const emptyPrescription: Prescription = {
         resourceType: "VisionPrescription",
+        patientName: "",
         dateWritten: new Date(),
         extension: [],
         lensSpecification: [{
@@ -70,7 +71,7 @@ export const PrescriptionInfoForm = (prescription: Prescription) => {
             }}>
                 <fieldset>
                     <form.Field
-                        name={`resourceType`}
+                        name={`patientName`}
                         children={(field) => (
                             <TextField>
                                 <Label htmlFor={field.name}>Patient Name: </Label>
