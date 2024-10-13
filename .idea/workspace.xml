@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a01bca36-675e-4817-b2ba-3f793a966df1" name="Changes" comment=":construction: - Trying to get tessaract to parse an image">
+    <list default="true" id="a01bca36-675e-4817-b2ba-3f793a966df1" name="Changes" comment=":construction: - Start of a new SubmitPrescription flow&#10;&#10;(also a bunch of commented out stuff for OCR)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/submit_prescription_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/v1/ocr_record/submit_prescription_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/PrescriptionInfoForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/PrescriptionInfoForm.tsx" afterDir="false" />
     </list>
     <list id="18d8d4e0-e4b4-4e6b-856b-44b6e97d4b4a" name="Setup" comment="Setup">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/cw_hackathon_development.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db/cw_hackathon_development.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,25 +33,6 @@
     &quot;accountId&quot;: &quot;4942552b-6855-4855-8769-f104185c0884&quot;
   }
 }</component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/.idea/workspace.xml">
-      <ranges>
-        <range start1="6" end1="7" start2="6" end2="14" changelist="a01bca36-675e-4817-b2ba-3f793a966df1" />
-        <range start1="8" end1="8" start2="15" end2="16" changelist="a01bca36-675e-4817-b2ba-3f793a966df1" />
-        <range start1="16" end1="16" start2="24" end2="62" changelist="a01bca36-675e-4817-b2ba-3f793a966df1" />
-        <range start1="27" end1="27" start2="73" end2="74" changelist="a01bca36-675e-4817-b2ba-3f793a966df1" />
-        <range start1="30" end1="30" start2="77" end2="78" changelist="a01bca36-675e-4817-b2ba-3f793a966df1" />
-        <range start1="39" end1="40" start2="87" end2="88" changelist="a01bca36-675e-4817-b2ba-3f793a966df1" />
-        <range start1="45" end1="45" start2="93" end2="94" changelist="a01bca36-675e-4817-b2ba-3f793a966df1" />
-        <range start1="51" end1="51" start2="100" end2="188" changelist="a01bca36-675e-4817-b2ba-3f793a966df1" />
-        <range start1="54" end1="56" start2="191" end2="193" changelist="a01bca36-675e-4817-b2ba-3f793a966df1" />
-        <range start1="64" end1="64" start2="201" end2="202" changelist="a01bca36-675e-4817-b2ba-3f793a966df1" />
-        <range start1="69" end1="69" start2="207" end2="208" changelist="a01bca36-675e-4817-b2ba-3f793a966df1" />
-        <range start1="70" end1="70" start2="209" end2="234" changelist="18d8d4e0-e4b4-4e6b-856b-44b6e97d4b4a" />
-        <range start1="74" end1="74" start2="238" end2="248" changelist="18d8d4e0-e4b4-4e6b-856b-44b6e97d4b4a" />
-      </ranges>
-    </file>
-  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -85,17 +64,18 @@
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;ruby.structure.view.model.defaults.configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/susiecarovillano/Documents/GitHub/cw_hackathon_project/frontend/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/controllers/api/v1/ocr_record" />
       <recent name="$PROJECT_DIR$/frontend/src/app/images" />
       <recent name="$PROJECT_DIR$/frontend/src" />
       <recent name="$PROJECT_DIR$/cw_hackathon_project" />
       <recent name="$PROJECT_DIR$/cw_hackathon_project/config/initializers" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="Rails.cw_hackathon_project">
@@ -205,11 +185,90 @@
       <option name="presentableId" value="Default" />
       <updated>1728624320561</updated>
       <workItem from="1728624321422" duration="3786000" />
-      <workItem from="1728731164408" duration="5441000" />
+      <workItem from="1728731164408" duration="10959000" />
     </task>
+    <task id="LOCAL-00001" summary="Add set up instructions to README.md">
+      <option name="closed" value="true" />
+      <created>1728733233065</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728733233065</updated>
+    </task>
+    <task id="LOCAL-00002" summary=":heavy_plus_sign: - Add dependencies for tessaract (OCR) and a couple other bits">
+      <option name="closed" value="true" />
+      <created>1728736394334</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1728736394334</updated>
+    </task>
+    <task id="LOCAL-00003" summary=":construction: - Trying to get tessaract to parse an image">
+      <option name="closed" value="true" />
+      <created>1728736476969</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1728736476969</updated>
+    </task>
+    <task id="LOCAL-00004" summary=":construction: - Getting in a rough form for the data, and a file upload for the OCR to read from">
+      <option name="closed" value="true" />
+      <created>1728737846484</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728737846484</updated>
+    </task>
+    <task id="LOCAL-00005" summary=":construction: - Pull Form out to component and add React Bootstrap stylings">
+      <option name="closed" value="true" />
+      <created>1728741392436</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728741392436</updated>
+    </task>
+    <task id="LOCAL-00006" summary=":construction: - Start of a new SubmitPrescription flow&#10;&#10;(also a bunch of commented out stuff for OCR)">
+      <option name="closed" value="true" />
+      <created>1728745006988</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1728745006988</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Add set up instructions to README.md" />
+    <MESSAGE value=":heavy_plus_sign: - Add dependencies for tessaract (OCR) and a couple other bits" />
+    <MESSAGE value="Setup" />
+    <MESSAGE value=":construction: - Trying to get tessaract to parse an image" />
+    <MESSAGE value=":construction: - Getting in a rough form for the data, and a file upload for the OCR to read from" />
+    <MESSAGE value=":construction: - Pull Form out to component and add React Bootstrap stylings" />
+    <MESSAGE value=":construction: - Start of a new SubmitPrescription flow&#10;&#10;(also a bunch of commented out stuff for OCR)" />
+    <option name="LAST_COMMIT_MESSAGE" value=":construction: - Start of a new SubmitPrescription flow&#10;&#10;(also a bunch of commented out stuff for OCR)" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/cw_hackathon_project@cw_hackathon_project.rcov" NAME="cw_hackathon_project Coverage Results" MODIFIED="1728732335786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cw_hackathon_project" />
   </component>
 </project>

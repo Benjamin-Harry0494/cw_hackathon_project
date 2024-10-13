@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
       namespace :ocr_record, defaults: { format: :json } do
         post '/', controller: :create_entry, action: :create
+        post '/submit', controller: :submit_prescription, action: :create
       end
     end
   end

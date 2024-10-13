@@ -1,5 +1,8 @@
 import {useEffect, useState} from 'react';
 import {createWorker} from 'tesseract.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import PrescriptionInfoForm from "../app/components/PrescriptionInfoForm";
+import '../app/styles/FormStyle.css'
 
 const TestPage = () => {
     const [message, setMessage] = useState('');
@@ -22,15 +25,18 @@ const TestPage = () => {
     }, []);
 
 
-    (async () => {
-        // const worker = await createWorker('eng');
-        const worker = await createWorker('eng', 1, {
-            logger: m => console.log(m),
-        });
+    let ocr = (async () => {
+        const worker = await createWorker('eng');
+        // const worker = await createWorker('eng', 1, {
+        //     logger: m => console.log(m),
+        // });
 
-        // const ret = await worker.recognize('http://localhost:3001/images/eng_bw.png');
-        // const ret = await worker.recognize('frontend/src/app/images/eng_bw.png');
-        // const ret = await worker.recognize('https://tesseract.projectnaptha.com/img/eng_bw.png');
+        const url = 'https://tesseract.projectnaptha.com/img/eng_bw.png';
+        // const url = 'frontend/src/app/images/eng_bw.png';
+        // const url = 'http://localhost:3001/images/eng_bw.png';
+
+        // let image = loadImage(url);
+        // const ret = await worker.recognize(image);
         // console.log(ret);
         await worker.terminate();
     })();
@@ -39,37 +45,33 @@ const TestPage = () => {
         console.log("Parsing prescription");
     }
 
+    // const container = document.querySelector(".container");
+
+
+    // function loadImage(url) {
+    //     const image = new Image(200, 200);
+    //     image.addEventListener("load", () => container.prepend(image));
+    //
+    //     image.addEventListener("error", () => {
+    //         const errMsg = document.createElement("output");
+    //         errMsg.value = `Error loading image at ${url}`;
+    //         container.append(errMsg);
+    //     });
+    //
+    //     image.crossOrigin = "anonymous";
+    //     image.alt = "";
+    //     image.src = url;
+    //
+    //     return image;
+    // }
+
     return (
         <div>
             <h1>Test API Response</h1>
             <p>{message}</p>
 
-            <h2> Upload Prescription</h2>
-            <form onClick={parsePrescription}>
-                {/*<form action="/read-prescription">*/}
-                <input type="file" id="myFile" name="filename"/>
-                <input type="submit"/>
-            </form>
-
-            <h2>Prescription Input</h2>
-            <form action="/generate-prescription" method="post">
-
-                <p>
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" name="user_name"/>
-                </p>
-                <p>
-                    <label htmlFor="mail">Email:</label>
-                    <input type="email" id="mail" name="user_email"/>
-                </p>
-                <p>
-                    <label htmlFor="msg">Message:</label>
-                    <textarea id="msg" name="user_message"></textarea>
-                </p>
-            </form>
-
-
-            <img src={"http://tesseract.projectnaptha.com/img/eng_bw.png"} alt={"poem"}/>
+            <h3> Upload Prescription</h3>
+            <PrescriptionInfoForm/>
 
         </div>
     );
