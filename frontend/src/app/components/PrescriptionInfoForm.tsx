@@ -31,7 +31,7 @@ function PrescriptionInfoForm() {
     const form = useForm({
         defaultValues: emptyPrescription,
         onSubmit: async ({value}) => {
-            const response = await fetch('http://localhost:3000/api/v1/ocr_record/submit/', {
+            const response = await fetch('http://localhost:3000/api/v1/ocr_record/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
